@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LoreMaps - Realms & Relics</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=IM+Fell+English+SC&display=swap');
+    body {
+      margin: 0;
+      background-color: #2b1a12;
+      font-family: 'IM Fell English SC', serif;
+      color: #f5e6c8;
+      text-align: center;
+    }
+    h1, h2 {
+      font-family: 'Cinzel', serif;
+      color: #ffd480;
+    }
+    p {
+      max-width: 800px;
+      margin: auto;
+      padding: 10px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: rgba(80, 40, 20, 0.85);
+      box-shadow: 0 0 15px rgba(255, 212, 128, 0.5);
+    }
+    th, td {
+      border: 1px solid #d4a76a;
+      padding: 10px 15px;
+    }
+    th {
+      background-color: #4d2b14;
+      color: #ffd480;
+    }
+    td {
+      color: #f5e6c8;
+    }
+    img {
+      border: 3px solid #d4a76a;
+      border-radius: 10px;
+      margin: 10px;
+    }
+    a {
+      color: #ffd480;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    button {
+      background-color: #4d2b14;
+      color: #ffd480;
+      border: 2px solid #d4a76a;
+      padding: 10px 20px;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 20px;
+      border-radius: 5px;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #6b3d1e;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>The Realms Beyond the Map</h1>
+  <p>
+    Welcome to <strong>LoreMaps</strong> - a living atlas for storytellers.  
+    Choose a map from any year mark your own locations and write the tales that unfold there.  
+    Watch the world grow as collaborators add their own histories, legends, and secrets to the same map.
+  </p>
+  <img src="assets/dragonspire.png" alt="Dragonspire Peak" width="300">
+  <img src="assets/moonlitlake.png" alt="Moonlit Lake" width="300">
+  <center><button onclick="revealLore()">Reveal Lore</button></center>
+  <h2>Mysterious Realms</h2>
+  <table>
+    <tr>
+      <th>Realm</th>
+      <th>Description</th>
+      <th>Danger Level</th>
+    </tr>
+    <tr>
+      <td>Dragonspire Peak</td>
+      <td>A mountain so high its tip pierces the clouds; said to be home to ember-breathing beasts.</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>Moonlit Lake</td>
+      <td>A serene body of water that glows under the full moon, revealing visions of the past.</td>
+      <td>Low</td>
+    </tr>
+  </table>
+  <h2>Historical Maps & Locations</h2>
+  <table>
+    <tr>
+      <th>Year</th>
+      <th>Location</th>
+      <th>Notable Event</th>
+    </tr>
+    <tr>
+      <td>1899</td>
+      <td>Crimson Ridge</td>
+      <td>Final stand of the Dust Veil Outlaws during the frontier's last days.</td>
+    </tr>
+    <tr>
+      <td>1900</td>
+      <td>Silverhorn Valley</td>
+      <td>First recorded gathering of the wandering storyteller caravans.</td>
+    </tr>
+    <tr>
+      <td>1902</td>
+      <td>Hollow Creek</td>
+      <td>Discovery of the Whispering Stones by local ranchers.</td>
+    </tr>
+  </table>
+  <p>
+    <a href="index.html">Return to the Map</a> | 
+    <a href="https://en.wikipedia.org/wiki/Fantasy_world" target="_blank">Learn More about Fantasy Worlds</a>
+  </p>
+ <script>
+  function revealLore() {
+    alert(
+      "📜 The map is not just a picture—it's a living chronicle.\n\n" +
+      "- Pick a year to explore the world as it was.\n" +
+      "- Mark your own locations—camps, hideouts, or secret meeting spots.\n" +
+      "- Write the stories tied to each place.\n" +
+      "- Invite allies to add their own lore, shaping the land together.\n" +
+      "- Some Realms are hidden across the land—discover them by exploring the right locations.\n\n" +
+      "Once written, these tales become part of the map forever."
+    );
+  }
+</script>
+</body>
+</html>
