@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+    <servlet>
+        <servlet-name>LProg1</servlet-name>
+        <servlet-class>LProg1</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LProg1</servlet-name>
+        <url-pattern>/LProg1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Lab7a</servlet-name>
+        <servlet-class>Lab7a</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Lab7a</servlet-name>
+        <url-pattern>/Lab7a</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Lab7b</servlet-name>
+        <servlet-class>Lab7b</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Lab7b</servlet-name>
+        <url-pattern>/Lab7b</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Lab7c</servlet-name>
+        <servlet-class>Lab7c</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Lab7c</servlet-name>
+        <url-pattern>/Lab7c</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Lab7d</servlet-name>
+        <servlet-class>Lab7d</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Lab7d</servlet-name>
+        <url-pattern>/Lab7d</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Lab8a</servlet-name>
+        <servlet-class>Lab8a</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Lab8a</servlet-name>
+        <url-pattern>/Lab8a</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Lab8b</servlet-name>
+        <servlet-class>Lab8b</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Lab8b</servlet-name>
+        <url-pattern>/Lab8b</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DBServlet9</servlet-name>
+        <servlet-class>DBServlet9</servlet-class>
+        <init-param>
+            <param-name>dbUrl</param-name>
+            <param-value>jdbc:mysql://localhost:3306/loremapdb?useSSL=false&amp;serverTimezone=UTC</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUser</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPass</param-name>
+            <param-value></param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DBServlet9</servlet-name>
+        <url-pattern>/DBServlet9</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="loremaps.xsl"?>
+<loremaps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="loremaps.xsd">
+    <mapregion>
+        <id>R001</id>
+        <name>Ancient Eldoria</name>
+        <type>Historical</type>
+        <coordinates>
+            <latitude>42.3601</latitude>
+            <longitude>-71.0589</longitude>
+        </coordinates>
+        <description>Ancient kingdom with medieval architecture and mystical forests</description>
+        <landmarks>15</landmarks>
+        <explorationlevel>Advanced</explorationlevel>
+    </mapregion>
+    
+    <mapregion>
+        <id>R002</id>
+        <name>Crystal Mountains</name>
+        <type>Geographical</type>
+        <coordinates>
+            <latitude>45.5231</latitude>
+            <longitude>-122.6765</longitude>
+        </coordinates>
+        <description>Towering mountain range with crystal caves and snow peaks</description>
+        <landmarks>8</landmarks>
+        <explorationlevel>Intermediate</explorationlevel>
+    </mapregion>
+    
+    <mapregion>
+        <id>R003</id>
+        <name>Mystic Bay</name>
+        <type>Coastal</type>
+        <coordinates>
+            <latitude>34.0522</latitude>
+            <longitude>-118.2437</longitude>
+        </coordinates>
+        <description>Serene coastal region with hidden coves and maritime history</description>
+        <landmarks>12</landmarks>
+        <explorationlevel>Beginner</explorationlevel>
+    </mapregion>
+    
+    <mapregion>
+        <id>R004</id>
+        <name>Dragon's Spine Desert</name>
+        <type>Desert</type>
+        <coordinates>
+            <latitude>36.1699</latitude>
+            <longitude>-115.1398</longitude>
+        </coordinates>
+        <description>Vast desert with ancient ruins and legendary dragon sightings</description>
+        <landmarks>6</landmarks>
+        <explorationlevel>Advanced</explorationlevel>
+    </mapregion>
+    
+    <mapregion>
+        <id>R005</id>
+        <name>Emerald Valley</name>
+        <type>Agricultural</type>
+        <coordinates>
+            <latitude>38.5816</latitude>
+            <longitude>-121.4944</longitude>
+        </coordinates>
+        <description>Lush green valley known for farming and peaceful villages</description>
+        <landmarks>20</landmarks>
+        <explorationlevel>Beginner</explorationlevel>
+    </mapregion>
+</loremaps>

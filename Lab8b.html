@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 8b - Individual User Hit Counter</title>
+    <style>
+        body { background-color: #f0f4f8; color: #2c3e50; text-align: center; font-family: Arial, sans-serif; margin-top: 50px; }
+        form { display: inline-block; background: #fff; padding: 30px; border: 2px solid #b8d4e8; border-radius: 10px; }
+        input { margin: 10px; padding: 8px; border: 1px solid #a8c5dd; border-radius: 4px; }
+        button { background-color: #c8dff0; color: #2c3e50; border: 2px solid #7fb3d5; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h2>LoreMaps - Individual Explorer Hit Counter</h2>
+    <form action="Lab8b" method="post">
+        <input type="text" name="username" placeholder="Enter Explorer Name" required><br>
+        <button type="submit" name="action" value="start">Start Tracking Session</button>
+        <button type="submit" name="action" value="view">View My Access Count</button>
+        <button type="submit" name="action" value="reset">Reset My Counter</button>
+    </form>
+</body>
+</html>

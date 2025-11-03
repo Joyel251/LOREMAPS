@@ -1,0 +1,24 @@
+# Documentation files
+*_Documentation.txt
+*_Report.txt
+Lab9_setup.sql
+
+# Compiled Java classes
+*.class
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db

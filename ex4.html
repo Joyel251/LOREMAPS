@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the LoreMaps Guild - Registration</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=IM+Fell+English+SC&display=swap');
+    
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #2b1a12;
+      font-family: 'IM Fell English SC', serif;
+      color: #f5e6c8;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: rgba(80, 40, 20, 0.85);
+      padding: 40px;
+      border: 3px solid #d4a76a;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255, 212, 128, 0.5);
+    }
+    
+    h1, h2 {
+      font-family: 'Cinzel', serif;
+      color: #ffd480;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #d4a76a;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ffd480;
+      font-weight: bold;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      background-color: #2b1a12;
+      border: 2px solid #d4a76a;
+      border-radius: 5px;
+      color: #f5e6c8;
+      font-family: 'IM Fell English SC', serif;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #ffd480;
+      box-shadow: 0 0 10px rgba(255, 212, 128, 0.3);
+    }
+    
+    .error {
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .error.show {
+      display: block;
+    }
+    
+    input.invalid, select.invalid, textarea.invalid {
+      border-color: #ff6b6b;
+    }
+    
+    input.valid, select.valid, textarea.valid {
+      border-color: #6bff6b;
+    }
+    
+    button {
+      background-color: #4d2b14;
+      color: #ffd480;
+      border: 2px solid #d4a76a;
+      padding: 15px 30px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+      width: 100%;
+      margin-top: 20px;
+    }
+    
+    button:hover {
+      background-color: #6b3d1e;
+      transform: scale(1.02);
+    }
+    
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .checkbox-group input {
+      width: auto;
+    }
+    
+    .success-message {
+      background-color: rgba(107, 255, 107, 0.2);
+      border: 2px solid #6bff6b;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+      margin-top: 20px;
+    }
+    
+    .success-message.show {
+      display: block;
+    }
+    
+    small {
+      color: #d4a76a;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1> Join the LoreMaps Guild </h1>
+    <p class="subtitle">Register your presence in the chronicles</p>
+    
+    <form id="registrationForm" novalidate>
+      
+      <!-- HTML5 Validation: required, minlength, pattern -->
+      <div class="form-group">
+        <label for="username">Adventurer Name *</label>
+        <input 
+          type="text" 
+          id="username" 
+          name="username" 
+          required 
+          minlength="3" 
+          maxlength="20"
+          pattern="[A-Za-z0-9_]+"
+          placeholder="e.g., ShadowScribe"
+        >
+        <small>3-20 characters, letters, numbers, and underscore only</small>
+        <span class="error" id="usernameError"></span>
+      </div>
+      
+      <!-- HTML5 Validation: required, email type -->
+      <div class="form-group">
+        <label for="email">Raven Post (Email) *</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          required
+          placeholder="your.raven@realm.com"
+        >
+        <span class="error" id="emailError"></span>
+      </div>
+      
+      <!-- JS Validation: Password strength check -->
+      <div class="form-group">
+        <label for="password">Secret Passphrase *</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          required
+          minlength="8"
+          placeholder="At least 8 characters"
+        >
+        <small>Must contain uppercase, lowercase, number, and special character</small>
+        <span class="error" id="passwordError"></span>
+      </div>
+      
+      <!-- JS Validation: Password match -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Passphrase *</label>
+        <input 
+          type="password" 
+          id="confirmPassword" 
+          name="confirmPassword" 
+          required
+          placeholder="Re-enter your passphrase"
+        >
+        <span class="error" id="confirmPasswordError"></span>
+      </div>
+      
+      <!-- HTML5 Validation: number type, min, max -->
+      <div class="form-group">
+        <label for="age">Age in Summers *</label>
+        <input 
+          type="number" 
+          id="age" 
+          name="age" 
+          required
+          min="13" 
+          max="120"
+          placeholder="Enter your age"
+        >
+        <small>Must be 13 or older to join the guild</small>
+        <span class="error" id="ageError"></span>
+      </div>
+      
+      <!-- HTML5 Validation: required select -->
+      <div class="form-group">
+        <label for="realm">Preferred Realm *</label>
+        <select id="realm" name="realm" required>
+          <option value="">-- Choose your realm --</option>
+          <option value="dragonspire">Dragonspire Peak</option>
+          <option value="moonlit">Moonlit Lake</option>
+          <option value="crimson">Crimson Ridge</option>
+          <option value="silverhorn">Silverhorn Valley</option>
+          <option value="hollow">Hollow Creek</option>
+        </select>
+        <span class="error" id="realmError"></span>
+      </div>
+      
+      <!-- JS Validation: Character class selection -->
+      <div class="form-group">
+        <label for="characterClass">Character Class *</label>
+        <select id="characterClass" name="characterClass" required>
+          <option value="">-- Select your class --</option>
+          <option value="storyteller">Storyteller</option>
+          <option value="mapmaker">Mapmaker</option>
+          <option value="historian">Historian</option>
+          <option value="explorer">Explorer</option>
+          <option value="guardian">Guardian</option>
+        </select>
+        <span class="error" id="characterClassError"></span>
+      </div>
+      
+      <!-- HTML5 Validation: url type -->
+      <div class="form-group">
+        <label for="website">Personal Chronicle (Website)</label>
+        <input 
+          type="url" 
+          id="website" 
+          name="website" 
+          placeholder="https://your-chronicles.com"
+        >
+        <small>Optional - share your existing tales</small>
+        <span class="error" id="websiteError"></span>
+      </div>
+      
+      <!-- JS Validation: Custom date validation -->
+      <div class="form-group">
+        <label for="startDate">Journey Start Date *</label>
+        <input 
+          type="date" 
+          id="startDate" 
+          name="startDate" 
+          required
+        >
+        <small>When do you wish to begin your adventure?</small>
+        <span class="error" id="startDateError"></span>
+      </div>
+      
+      <!-- JS Validation: Word count check -->
+      <div class="form-group">
+        <label for="backstory">Character Backstory *</label>
+        <textarea 
+          id="backstory" 
+          name="backstory" 
+          rows="4" 
+          required
+          placeholder="Tell us your tale... (minimum 20 words)"
+        ></textarea>
+        <small id="wordCount">Words: 0 / 20 minimum</small>
+        <span class="error" id="backstoryError"></span>
+      </div>
+      
+      <!-- JS Validation: Skills selection (at least 2) -->
+      <div class="form-group">
+        <label>Special Skills * (Select at least 2)</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="skill1" name="skills" value="combat">
+          <label for="skill1" style="margin-bottom: 0;">Combat</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="skill2" name="skills" value="magic">
+          <label for="skill2" style="margin-bottom: 0;">Magic</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="skill3" name="skills" value="stealth">
+          <label for="skill3" style="margin-bottom: 0;">Stealth</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="skill4" name="skills" value="diplomacy">
+          <label for="skill4" style="margin-bottom: 0;">Diplomacy</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="skill5" name="skills" value="crafting">
+          <label for="skill5" style="margin-bottom: 0;">Crafting</label>
+        </div>
+        <span class="error" id="skillsError"></span>
+      </div>
+      
+      <!-- JS Validation: Username availability check (simulated) -->
+      <div class="form-group">
+        <label for="guildTag">Guild Tag *</label>
+        <input 
+          type="text" 
+          id="guildTag" 
+          name="guildTag" 
+          required
+          maxlength="4"
+          pattern="[A-Z]{4}"
+          placeholder="e.g., LORE"
+        >
+        <small>4 uppercase letters only</small>
+        <span class="error" id="guildTagError"></span>
+      </div>
+      
+      <!-- HTML5 Validation: required checkbox -->
+      <div class="form-group">
+        <div class="checkbox-group">
+          <input 
+            type="checkbox" 
+            id="terms" 
+            name="terms" 
+            required
+          >
+          <label for="terms" style="margin-bottom: 0;">
+            I agree to the Guild's Code of Honor *
+          </label>
+        </div>
+        <span class="error" id="termsError"></span>
+      </div>
+      
+      <button type="submit">Inscribe My Name in the Chronicles</button>
+    </form>
+    
+    <div class="success-message" id="successMessage">
+      <h2>🎉 Welcome to the Guild! 🎉</h2>
+      <p>Your registration has been inscribed in the ancient texts. Check your raven post for further instructions.</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const successMessage = document.getElementById('successMessage');
+    
+    // Forbidden guild tags (simulated taken tags)
+    const forbiddenTags = ['EVIL', 'HATE', 'KILL', 'DEAD'];
+    
+    // Real-time word count for backstory
+    const backstory = document.getElementById('backstory');
+    const wordCount = document.getElementById('wordCount');
+    
+    backstory.addEventListener('input', function() {
+      const words = this.value.trim().split(/\s+/).filter(word => word.length > 0);
+      const count = this.value.trim() === '' ? 0 : words.length;
+      wordCount.textContent = `Words: ${count} / 20 minimum`;
+      
+      if (count >= 20) {
+        wordCount.style.color = '#6bff6b';
+      } else {
+        wordCount.style.color = '#d4a76a';
+      }
+    });
+    
+    // JS Validation 1: Password strength check
+    function validatePassword(password) {
+      const minLength = 8;
+      const hasUpperCase = /[A-Z]/.test(password);
+      const hasLowerCase = /[a-z]/.test(password);
+      const hasNumber = /\d/.test(password);
+      const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      
+      if (password.length < minLength) {
+        return 'Password must be at least 8 characters long';
+      }
+      if (!hasUpperCase) {
+        return 'Password must contain at least one uppercase letter';
+      }
+      if (!hasLowerCase) {
+        return 'Password must contain at least one lowercase letter';
+      }
+      if (!hasNumber) {
+        return 'Password must contain at least one number';
+      }
+      if (!hasSpecialChar) {
+        return 'Password must contain at least one special character';
+      }
+      return '';
+    }
+    
+    // JS Validation 2: Password match
+    function validatePasswordMatch() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      
+      if (confirmPassword && password !== confirmPassword) {
+        return 'Passphrases do not match';
+      }
+      return '';
+    }
+    
+    // JS Validation 3: Date validation (not in the past, not too far future)
+    function validateStartDate(dateStr) {
+      if (!dateStr) return 'Journey start date is required';
+      
+      const selectedDate = new Date(dateStr);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      const maxDate = new Date();
+      maxDate.setFullYear(maxDate.getFullYear() + 1);
+      
+      if (selectedDate < today) {
+        return 'Your journey cannot start in the past';
+      }
+      if (selectedDate > maxDate) {
+        return 'Journey date cannot be more than 1 year in the future';
+      }
+      return '';
+    }
+    
+    // JS Validation 4: Word count validation
+    function validateBackstory(text) {
+      const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+      const count = text.trim() === '' ? 0 : words.length;
+      
+      if (count < 20) {
+        return `Backstory must be at least 20 words (currently ${count} words)`;
+      }
+      return '';
+    }
+    
+    // JS Validation 5: Skills selection (at least 2)
+    function validateSkills() {
+      const checkboxes = document.querySelectorAll('input[name="skills"]:checked');
+      if (checkboxes.length < 2) {
+        return 'Please select at least 2 special skills';
+      }
+      return '';
+    }
+    
+    // JS Validation 6: Guild tag validation
+    function validateGuildTag(tag) {
+      if (!tag) return 'Guild tag is required';
+      if (tag.length !== 4) {
+        return 'Guild tag must be exactly 4 characters';
+      }
+      if (!/^[A-Z]{4}$/.test(tag)) {
+        return 'Guild tag must be 4 uppercase letters';
+      }
+      if (forbiddenTags.includes(tag)) {
+        return 'This guild tag is forbidden or already taken';
+      }
+      return '';
+    }
+    
+    // JS Validation 7: Character class validation
+    function validateCharacterClass(value) {
+      if (!value) {
+        return 'Please select a character class';
+      }
+      return '';
+    }
+    
+    // JS Validation 8: Username special validation
+    function validateUsername(username) {
+      if (!username) return 'Adventurer name is required';
+      if (username.length < 3) {
+        return 'Adventurer name must be at least 3 characters';
+      }
+      if (username.length > 20) {
+        return 'Adventurer name must not exceed 20 characters';
+      }
+      if (!/^[A-Za-z0-9_]+$/.test(username)) {
+        return 'Adventurer name can only contain letters, numbers, and underscores';
+      }
+      // Check for inappropriate words (basic example)
+      const forbidden = ['admin', 'root', 'system'];
+      if (forbidden.some(word => username.toLowerCase().includes(word))) {
+        return 'This adventurer name is reserved';
+      }
+      return '';
+    }
+    
+    // Show error message
+    function showError(inputId, message) {
+      const input = document.getElementById(inputId);
+      const errorElement = document.getElementById(inputId + 'Error');
+      
+      if (message) {
+        input.classList.add('invalid');
+        input.classList.remove('valid');
+        errorElement.textContent = message;
+        errorElement.classList.add('show');
+      } else {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+        errorElement.classList.remove('show');
+      }
+    }
+    
+    // Real-time validation
+    document.getElementById('username').addEventListener('blur', function() {
+      showError('username', validateUsername(this.value));
+    });
+    
+    document.getElementById('password').addEventListener('input', function() {
+      showError('password', validatePassword(this.value));
+      // Also check confirm password if it has a value
+      const confirmPassword = document.getElementById('confirmPassword');
+      if (confirmPassword.value) {
+        showError('confirmPassword', validatePasswordMatch());
+      }
+    });
+    
+    document.getElementById('confirmPassword').addEventListener('input', function() {
+      showError('confirmPassword', validatePasswordMatch());
+    });
+    
+    document.getElementById('startDate').addEventListener('change', function() {
+      showError('startDate', validateStartDate(this.value));
+    });
+    
+    document.getElementById('backstory').addEventListener('blur', function() {
+      showError('backstory', validateBackstory(this.value));
+    });
+    
+    document.querySelectorAll('input[name="skills"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const errorElement = document.getElementById('skillsError');
+        const skillsError = validateSkills();
+        if (skillsError) {
+          errorElement.textContent = skillsError;
+          errorElement.classList.add('show');
+        } else {
+          errorElement.classList.remove('show');
+        }
+      });
+    });
+    
+    document.getElementById('guildTag').addEventListener('input', function() {
+      this.value = this.value.toUpperCase();
+      showError('guildTag', validateGuildTag(this.value));
+    });
+    
+    document.getElementById('characterClass').addEventListener('change', function() {
+      showError('characterClass', validateCharacterClass(this.value));
+    });
+    
+    // Form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Run all validations
+      let isValid = true;
+      
+      // JS Validations
+      const usernameError = validateUsername(document.getElementById('username').value);
+      showError('username', usernameError);
+      if (usernameError) isValid = false;
+      
+      const passwordError = validatePassword(document.getElementById('password').value);
+      showError('password', passwordError);
+      if (passwordError) isValid = false;
+      
+      const confirmPasswordError = validatePasswordMatch();
+      showError('confirmPassword', confirmPasswordError);
+      if (confirmPasswordError) isValid = false;
+      
+      const startDateError = validateStartDate(document.getElementById('startDate').value);
+      showError('startDate', startDateError);
+      if (startDateError) isValid = false;
+      
+      const backstoryError = validateBackstory(document.getElementById('backstory').value);
+      showError('backstory', backstoryError);
+      if (backstoryError) isValid = false;
+      
+      const skillsError = validateSkills();
+      if (skillsError) {
+        document.getElementById('skillsError').textContent = skillsError;
+        document.getElementById('skillsError').classList.add('show');
+        isValid = false;
+      }
+      
+      const guildTagError = validateGuildTag(document.getElementById('guildTag').value);
+      showError('guildTag', guildTagError);
+      if (guildTagError) isValid = false;
+      
+      const characterClassError = validateCharacterClass(document.getElementById('characterClass').value);
+      showError('characterClass', characterClassError);
+      if (characterClassError) isValid = false;
+      
+      // HTML5 validations
+      if (!form.checkValidity()) {
+        isValid = false;
+        
+        // Show errors for HTML5 validated fields
+        const email = document.getElementById('email');
+        if (!email.validity.valid) {
+          if (email.validity.valueMissing) {
+            showError('email', 'Raven post (email) is required');
+          } else if (email.validity.typeMismatch) {
+            showError('email', 'Please enter a valid email address');
+          }
+        }
+        
+        const age = document.getElementById('age');
+        if (!age.validity.valid) {
+          if (age.validity.valueMissing) {
+            showError('age', 'Age is required');
+          } else if (age.validity.rangeUnderflow) {
+            showError('age', 'You must be at least 13 years old');
+          } else if (age.validity.rangeOverflow) {
+            showError('age', 'Please enter a valid age');
+          }
+        }
+        
+        const realm = document.getElementById('realm');
+        if (!realm.validity.valid) {
+          showError('realm', 'Please select your preferred realm');
+        }
+        
+        const website = document.getElementById('website');
+        if (website.value && !website.validity.valid) {
+          showError('website', 'Please enter a valid URL (e.g., https://example.com)');
+        }
+        
+        const terms = document.getElementById('terms');
+        if (!terms.validity.valid) {
+          document.getElementById('termsError').textContent = 'You must agree to the Guild\'s Code of Honor';
+          document.getElementById('termsError').classList.add('show');
+        }
+      }
+      
+      if (isValid) {
+        // Hide form and show success message
+        form.style.display = 'none';
+        successMessage.classList.add('show');
+        
+        // Log form data (in real app, would send to server)
+        const formData = new FormData(form);
+        console.log('Registration successful!');
+        for (let [key, value] of formData.entries()) {
+          console.log(key + ': ' + value);
+        }
+      } else {
+        // Scroll to first error
+        const firstError = document.querySelector('.error.show');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
