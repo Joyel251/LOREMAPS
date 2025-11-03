@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LoreMaps</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+</head>
+<body style="margin: 0; background-color: #3a0000;">
+  <div style="text-align: center;">
+    <img src="assets/logo3.png" alt="LoreMaps Image" usemap="#imagemap" style="max-width: 100%; height: auto;">
+  </div>
+  <map name="imagemap">
+    <area shape="circle" coords="771,715,107" alt="Compass" href="#" onclick="showCompassLore(event)">
+    <area shape="poly" coords="193,173,104,178,232,231,270,259,339,276,391,267,459,249,487,213,486,174,417,175,399,178,353,86,212,91" alt="Hat" href="#" onclick="showHatLore(event)">
+    <area shape="rect" coords="668,907,981,1002" alt="enter the map" href="secondpage.html">
+  </map>
+  <script>
+    function showCompassLore(event) {
+      event.preventDefault();
+      alert("🧭 Compass of Fate: Always points toward the next hidden chapter.");
+    }
+    function showHatLore(event) {
+      event.preventDefault();
+      alert("🎩 Wanderer's Hat: Worn by explorers who walk the line between history and myth.");
+    }
+</script>
+</body>
+</html>
