@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 10b - Access XML through HTML</title>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4a7ba7;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #c8dff0;
+            color: #2c3e50;
+            border: 2px solid #7fb3d5;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background-color: #a8c9e6;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9fbfc;
+            border-left: 4px solid #4a7ba7;
+            border-radius: 5px;
+        }
+        .region-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        .region-name {
+            font-size: 20px;
+            color: #4a7ba7;
+            font-weight: bold;
+        }
+        .region-detail {
+            margin: 5px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LoreMaps - Access XML via HTML/JavaScript</h1>
+        <p style="text-align: center; color: #666;">Click buttons to load and display XML map region data</p>
+        
+        <div style="text-align: center;">
+            <button onclick="loadXML()">Load All Regions</button>
+            <button onclick="filterByLevel('Beginner')">Beginner Regions</button>
+            <button onclick="filterByLevel('Advanced')">Advanced Regions</button>
+            <button onclick="countLandmarks()">Count Total Landmarks</button>
+        </div>
+        
+        <div id="output"></div>
+    </div>
+
+    <script>
+        let xmlDoc = null;
+
+        function loadXML() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    xmlDoc = this.responseXML;
+                    displayAllRegions();
+                }
+            };
+            xhttp.open("GET", "loremaps.xml", true);
+            xhttp.send();
+        }
+
+        function displayAllRegions() {
+            if (!xmlDoc) {
+                document.getElementById("output").innerHTML = "<p style='color: red;'>Please load XML first!</p>";
+                return;
+            }
+
+            const regions = xmlDoc.getElementsByTagName("mapregion");
+            let html = "<h2>All Map Regions (" + regions.length + " total)</h2>";
+
+            for (let i = 0; i < regions.length; i++) {
+                const id = regions[i].getElementsByTagName("id")[0].textContent;
+                const name = regions[i].getElementsByTagName("name")[0].textContent;
+                const type = regions[i].getElementsByTagName("type")[0].textContent;
+                const desc = regions[i].getElementsByTagName("description")[0].textContent;
+                const lat = regions[i].getElementsByTagName("latitude")[0].textContent;
+                const lon = regions[i].getElementsByTagName("longitude")[0].textContent;
+                const landmarks = regions[i].getElementsByTagName("landmarks")[0].textContent;
+                const level = regions[i].getElementsByTagName("explorationlevel")[0].textContent;
+
+                html += `
+                    <div class="region-item">
+                        <div class="region-name">${name} (${id})</div>
+                        <div class="region-detail"><strong>Type:</strong> ${type}</div>
+                        <div class="region-detail"><strong>Description:</strong> ${desc}</div>
+                        <div class="region-detail"><strong>Coordinates:</strong> ${lat}, ${lon}</div>
+                        <div class="region-detail"><strong>Landmarks:</strong> ${landmarks}</div>
+                        <div class="region-detail"><strong>Level:</strong> ${level}</div>
+                    </div>
+                `;
+            }
+
+            document.getElementById("output").innerHTML = html;
+        }
+
+        function filterByLevel(level) {
+            if (!xmlDoc) {
+                loadXML();
+                setTimeout(() => filterByLevel(level), 500);
+                return;
+            }
+
+            const regions = xmlDoc.getElementsByTagName("mapregion");
+            let html = `<h2>${level} Level Regions</h2>`;
+            let count = 0;
+
+            for (let i = 0; i < regions.length; i++) {
+                const explorationLevel = regions[i].getElementsByTagName("explorationlevel")[0].textContent;
+                
+                if (explorationLevel === level) {
+                    count++;
+                    const name = regions[i].getElementsByTagName("name")[0].textContent;
+                    const type = regions[i].getElementsByTagName("type")[0].textContent;
+                    const landmarks = regions[i].getElementsByTagName("landmarks")[0].textContent;
+
+                    html += `
+                        <div class="region-item">
+                            <div class="region-name">${name}</div>
+                            <div class="region-detail"><strong>Type:</strong> ${type}</div>
+                            <div class="region-detail"><strong>Landmarks:</strong> ${landmarks}</div>
+                            <div class="region-detail"><strong>Level:</strong> ${explorationLevel}</div>
+                        </div>
+                    `;
+                }
+            }
+
+            html = `<h2>${level} Level Regions (${count} found)</h2>` + html.substring(html.indexOf('</h2>') + 5);
+            document.getElementById("output").innerHTML = html;
+        }
+
+        function countLandmarks() {
+            if (!xmlDoc) {
+                loadXML();
+                setTimeout(countLandmarks, 500);
+                return;
+            }
+
+            const regions = xmlDoc.getElementsByTagName("mapregion");
+            let total = 0;
+            let html = "<h2>Landmark Statistics</h2>";
+
+            for (let i = 0; i < regions.length; i++) {
+                const name = regions[i].getElementsByTagName("name")[0].textContent;
+                const landmarks = parseInt(regions[i].getElementsByTagName("landmarks")[0].textContent);
+                total += landmarks;
+
+                html += `<div class="region-detail"><strong>${name}:</strong> ${landmarks} landmarks</div>`;
+            }
+
+            html += `<div style="margin-top: 20px; padding: 15px; background: #c8dff0; border-radius: 5px; font-size: 20px; font-weight: bold; color: #2c3e50;">
+                Total Landmarks Across All Regions: ${total}
+            </div>`;
+
+            document.getElementById("output").innerHTML = html;
+        }
+
+        // Auto-load on page load
+        window.onload = function() {
+            loadXML();
+        };
+    </script>
+</body>
+</html>

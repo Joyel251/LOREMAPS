@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LoreMaps - Realm Registration</title>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'IM Fell English SC', serif;
+            text-align: center;
+            margin-top: 50px;
+            color: #2c3e50;
+        }
+        form {
+            display: inline-block;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            border: 2px solid #b8d4e8;
+            box-shadow: 0 2px 8px rgba(100, 150, 200, 0.15);
+        }
+        input, select, textarea {
+            margin: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #a8c5dd;
+            width: 80%;
+            background-color: #fafbfc;
+            color: #2c3e50;
+        }
+        button {
+            background-color: #c8dff0;
+            color: #2c3e50;
+            border: 2px solid #7fb3d5;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #a8c9e6;
+            transform: scale(1.05);
+        }
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: #4a7ba7;
+            text-shadow: 0 1px 2px rgba(74, 123, 167, 0.2);
+        }
+
+        /* Print-friendly rules: force light backgrounds and black text */
+        @media print {
+            /* Try to preserve colors as black/white where possible */
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body, form, input, select, textarea, button {
+                background: #ffffff !important;
+                color: #000000 !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+            input, select, textarea, button { border-color: #000 !important; }
+            button { background: #ffffff !important; border: 1px solid #000 !important; }
+            /* Remove hover / transform for print */
+            button:hover { transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Register Your LoreMaps Journey</h2>
+    <!-- Use a relative action so the form posts to the current webapp context (avoid hard-coded app names like WEBDEV) -->
+    <form action="LProg1" method="post">
+        <input type="text" name="name" placeholder="Adventurer Name" required><br>
+        <input type="email" name="email" placeholder="Raven Post (Email)" required><br>
+        <input type="text" name="realm" placeholder="Preferred Realm" required><br>
+
+        <label>Choose Your Character Class:</label><br>
+        <select name="charclass" required>
+            <option value="Knight">Knight</option>
+            <option value="Sorcerer">Sorcerer</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Bard">Bard</option>
+        </select><br>
+
+        <label>Select Your Journey Type:</label><br>
+        <select name="journey">
+            <option value="Quest of Valor">Quest of Valor</option>
+            <option value="Mystic Discovery">Mystic Discovery</option>
+            <option value="Exploration of Realms">Exploration of Realms</option>
+            <option value="Chronicle Writing">Chronicle Writing</option>
+        </select><br>
+
+        <label>Guild Tag:</label><br>
+        <input type="text" name="guild" placeholder="Enter Guild Tag (4 letters)" maxlength="4" required><br>
+
+        <textarea name="backstory" placeholder="Share your backstory or purpose for joining..." rows="4"></textarea><br>
+
+        <button type="submit">Begin the Journey</button>
+    </form>
+</body>
+</html>
